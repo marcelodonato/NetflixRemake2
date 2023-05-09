@@ -17,36 +17,23 @@ class MainActivity : BaseActivity<BaseViewModel>() {
         setupView()
     }
 
-    private fun mockTest(): MutableList<Category> {
-
-        val categories = mutableListOf<Category>()
-        for (j in 0 until 5) {
-            val movies = mutableListOf<Movie>()
-            for (i in 0 until 15) {
-                val movie = Movie(R.drawable.movie)
-                movies.add(movie)
-            }
-            val category = Category("cat $j", movies)
-            categories.add(category)
-        }
-        return categories
-    }
-
     private fun mockMovies(): List<Movie> {
-        val movies = mutableListOf<Movie>()
-        repeat(15) {
-            movies.add(Movie(R.drawable.placeholder_bg))
-        }
-        return movies
+        return listOf(
+            Movie(R.drawable.movie_4),
+            Movie(R.drawable.placeholder_bg),
+            Movie(R.drawable.movie),
+            Movie(R.drawable.placeholder_bg),
+            Movie(R.drawable.placeholder_bg),
+            Movie(R.drawable.movie_4),
+            Movie(R.drawable.movie),
+        )
     }
 
-    private fun setupView() {
-        with(binding) {
-            rvMainComponent.setupWith(Category("category movies", mockMovies())) {
+private fun setupView() {
+    with(binding) {
+        rvMainComponent.setupWith(Category("Nome da categoria",mockMovies())) {
 
-            }
         }
     }
-
-    private fun setRecycler() {}
+}
 }
