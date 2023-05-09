@@ -8,6 +8,7 @@ import com.example.netflixremake.data.model.Category
 import com.example.netflixremake.data.model.Movie
 import com.example.netflixremake.databinding.ActivityMainBinding
 import com.example.netflixremake.extension.viewBinding
+import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 
 class MainActivity : BaseActivity<BaseViewModel>() {
     override val binding by viewBinding(ActivityMainBinding::inflate)
@@ -15,6 +16,17 @@ class MainActivity : BaseActivity<BaseViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupView()
+    }
+
+    private fun mockCategories(): List<Category> {
+        return listOf(
+            Category("Nome da categoria1", mockMovies()),
+            Category("Nome da categoria2", mockMovies()),
+            Category("Nome da categoria3", mockMovies()),
+            Category("Nome da categoria4", mockMovies()),
+            Category("Nome da categoria4", mockMovies()),
+            Category("Nome da categoria4", mockMovies()),
+        )
     }
 
     private fun mockMovies(): List<Movie> {
@@ -29,11 +41,16 @@ class MainActivity : BaseActivity<BaseViewModel>() {
         )
     }
 
-private fun setupView() {
-    with(binding) {
-        rvMainComponent.setupWith(Category("Nome da categoria",mockMovies())) {
+    private fun setupView() {
+        setupRecyclerView(mockCategories())
+    }
+
+    private fun setupRecyclerView(categories: List<Category>) {
+        with(binding) {
+            val mainAdapter = NetflixGenericAdapter()
+            mainAdapter.items = categories
+            rvMain.adapter = mainAdapter
 
         }
     }
-}
 }

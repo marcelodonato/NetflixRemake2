@@ -12,12 +12,14 @@ import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 class CategoryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var binding = CategoryItemBinding.bind(itemView)
 
-    fun bindWith(item: Category, clickListener: (AdaptableItem) -> Unit) {
+    fun bindWith(items: Category, clickListener: (AdaptableItem) -> Unit) {
         with(binding) {
-            tvTitle.text = item.name
+            tvTitle.text = items.name
             rvCategory.apply {
+                val categoryAdapter = NetflixGenericAdapter()
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                adapter = NetflixGenericAdapter()
+                categoryAdapter.items = items.movies
+                adapter = categoryAdapter
             }
         }
     }
