@@ -8,12 +8,13 @@ import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.base.BaseViewModel
 import com.example.netflixremake.data.model.Movie
-import com.example.netflixremake.databinding.ActivityMovieBinding
+import com.example.netflixremake.databinding.ActivityMovieDetailsBinding
 import com.example.netflixremake.extension.viewBinding
+import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 
-class MovieActivity : BaseActivity<BaseViewModel>() {
+class MovieDetailsActivity : BaseActivity<BaseViewModel>() {
 
-    override val binding by viewBinding(ActivityMovieBinding::inflate)
+    override val binding by viewBinding(ActivityMovieDetailsBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,15 +47,21 @@ class MovieActivity : BaseActivity<BaseViewModel>() {
 
     private fun mockMovies(): List<Movie> {
         val movies = mutableListOf<Movie>()
-        for (i in 0 until 15) {
-            val movie = Movie(R.drawable.movie)
-            movies.add(movie)
+        repeat(15){
+            movies.add(Movie(R.drawable.movie))
         }
         return movies
     }
 
     private fun setupRecycler() {
-        binding.rvMovieSimilar.layoutManager = GridLayoutManager(this, 3)
-        binding.rvMovieSimilar.adapter = MovieSimilarAdapter(mockMovies())
+        with(binding) {
+            rvMovieSimilar.apply{
+                layoutManager = GridLayoutManager(this@MovieDetailsActivity, 3)
+                val adapterMovies = NetflixGenericAdapter()
+                adapterMovies.items = mockMovies()
+                adapter = adapterMovies
+
+            }
+        }
     }
 }

@@ -13,19 +13,19 @@
         android:theme="@style/Theme.NetflixRemake"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.movie.MovieActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".presentation.movie.MovieDetailsActivity"
+            android:exported="true">
 
         </activity>
         <activity
             android:name=".presentation.home.view.MainActivity"
             android:exported="true">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

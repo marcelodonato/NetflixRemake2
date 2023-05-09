@@ -14,7 +14,7 @@ class MainActivity : BaseActivity<BaseViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setRecycler()
+        setupView()
     }
 
     private fun mockTest(): MutableList<Category> {
@@ -32,7 +32,21 @@ class MainActivity : BaseActivity<BaseViewModel>() {
         return categories
     }
 
-    private fun setRecycler() {
-        binding.rvMain.adapter = CategoryAdapter(mockTest())
+    private fun mockMovies(): List<Movie> {
+        val movies = mutableListOf<Movie>()
+        repeat(15) {
+            movies.add(Movie(R.drawable.placeholder_bg))
+        }
+        return movies
     }
+
+    private fun setupView() {
+        with(binding) {
+            rvMainComponent.setupWith(Category("category movies", mockMovies())) {
+
+            }
+        }
+    }
+
+    private fun setRecycler() {}
 }
