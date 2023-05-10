@@ -17,6 +17,9 @@ class CategoryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
             tvTitle.text = items.name
             rvCategory.apply {
                 val categoryAdapter = NetflixGenericAdapter()
+                categoryAdapter.clickListener = {
+                    clickListener.invoke(items)
+                }
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                 categoryAdapter.items = items.movies
                 adapter = categoryAdapter

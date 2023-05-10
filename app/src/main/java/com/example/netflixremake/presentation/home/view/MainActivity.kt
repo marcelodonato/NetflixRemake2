@@ -1,5 +1,6 @@
 package com.example.netflixremake.presentation.home.view
 
+import android.content.Intent
 import android.os.Bundle
 import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
@@ -9,6 +10,7 @@ import com.example.netflixremake.data.model.Movie
 import com.example.netflixremake.databinding.ActivityMainBinding
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
+import com.example.netflixremake.presentation.movie.MovieDetailsActivity
 
 class MainActivity : BaseActivity<BaseViewModel>() {
     override val binding by viewBinding(ActivityMainBinding::inflate)
@@ -48,9 +50,17 @@ class MainActivity : BaseActivity<BaseViewModel>() {
     private fun setupRecyclerView(categories: List<Category>) {
         with(binding) {
             val mainAdapter = NetflixGenericAdapter()
+            mainAdapter.clickListener = {
+                setMovieDetails()
+            }
             mainAdapter.items = categories
             rvMain.adapter = mainAdapter
 
         }
+    }
+
+    private fun setMovieDetails(){
+        val intent = Intent(this@MainActivity, MovieDetailsActivity::class.java)
+        startActivity(intent)
     }
 }

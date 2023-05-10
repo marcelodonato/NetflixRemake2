@@ -1,5 +1,6 @@
 package com.example.netflixremake.presentation.movie
 
+import android.content.Intent
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -8,9 +9,11 @@ import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.base.BaseViewModel
 import com.example.netflixremake.data.model.Movie
+import com.example.netflixremake.data.model.MovieSimilar
 import com.example.netflixremake.databinding.ActivityMovieDetailsBinding
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
+import com.example.netflixremake.presentation.home.view.MainActivity
 
 class MovieDetailsActivity : BaseActivity<BaseViewModel>() {
 
@@ -44,24 +47,35 @@ class MovieDetailsActivity : BaseActivity<BaseViewModel>() {
             tvMovieCast.text = getString(R.string.cast, "actor A, actor B, actress A, actress B")
         }
     }
-
-    private fun mockMovies(): List<Movie> {
-        val movies = mutableListOf<Movie>()
-        repeat(15){
-            movies.add(Movie(R.drawable.movie))
-        }
-        return movies
+    private fun mockMovies(): List<MovieSimilar> {
+        return listOf(
+            MovieSimilar(R.drawable.movie_4),
+            MovieSimilar(R.drawable.placeholder_bg),
+            MovieSimilar(R.drawable.movie),
+            MovieSimilar(R.drawable.placeholder_bg),
+            MovieSimilar(R.drawable.placeholder_bg),
+            MovieSimilar(R.drawable.movie_4),
+            MovieSimilar(R.drawable.movie),
+        )
     }
 
     private fun setupRecycler() {
         with(binding) {
             rvMovieSimilar.apply{
-                layoutManager = GridLayoutManager(this@MovieDetailsActivity, 3)
                 val adapterMovies = NetflixGenericAdapter()
+                adapterMovies.clickListener = {
+                    setMainActivity()
+                }
+                layoutManager = GridLayoutManager(this@MovieDetailsActivity, 3)
                 adapterMovies.items = mockMovies()
                 adapter = adapterMovies
 
             }
         }
+    }
+
+    private fun setMainActivity(){
+        val intent = Intent(this@MovieDetailsActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 }
