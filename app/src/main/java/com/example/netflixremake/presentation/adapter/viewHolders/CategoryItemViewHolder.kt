@@ -1,6 +1,5 @@
 package com.example.netflixremake.presentation.adapter.viewHolders
 
-import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +20,7 @@ class CategoryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
                     clickListener.invoke(items)
                 }
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                categoryAdapter.items = items.movies
+                categoryAdapter.items = items.movieList
                 adapter = categoryAdapter
             }
         }

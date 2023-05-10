@@ -8,15 +8,19 @@ import com.example.netflixremake.base.BaseViewModel
 import com.example.netflixremake.data.model.Category
 import com.example.netflixremake.data.model.Movie
 import com.example.netflixremake.databinding.ActivityMainBinding
+import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
+import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
 import com.example.netflixremake.presentation.movie.MovieDetailsActivity
 
-class MainActivity : BaseActivity<BaseViewModel>() {
+class HomeActivity : BaseActivity<HomeViewModel>() {
     override val binding by viewBinding(ActivityMainBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        NetflixInitializer.init()
+//        viewModel.getCategories()
         setupView()
     }
 
@@ -60,7 +64,7 @@ class MainActivity : BaseActivity<BaseViewModel>() {
     }
 
     private fun setMovieDetails(){
-        val intent = Intent(this@MainActivity, MovieDetailsActivity::class.java)
+        val intent = Intent(this@HomeActivity, MovieDetailsActivity::class.java)
         startActivity(intent)
     }
 }

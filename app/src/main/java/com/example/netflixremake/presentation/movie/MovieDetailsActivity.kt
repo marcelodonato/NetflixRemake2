@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.base.BaseViewModel
-import com.example.netflixremake.data.model.Movie
 import com.example.netflixremake.data.model.MovieSimilar
 import com.example.netflixremake.databinding.ActivityMovieDetailsBinding
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
-import com.example.netflixremake.presentation.home.view.MainActivity
+import com.example.netflixremake.presentation.home.view.HomeActivity
 
 class MovieDetailsActivity : BaseActivity<BaseViewModel>() {
 
@@ -75,7 +74,7 @@ class MovieDetailsActivity : BaseActivity<BaseViewModel>() {
     }
 
     private fun setMainActivity(){
-        val intent = Intent(this@MovieDetailsActivity, MainActivity::class.java)
+        val intent = Intent(this@MovieDetailsActivity, HomeActivity::class.java)
         startActivity(intent)
     }
 }
