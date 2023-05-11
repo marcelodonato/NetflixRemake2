@@ -6,7 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 class NetflixRemoteDataSource(private val api: NetflixAPI) : BaseDataSource() {
 
-    fun getCategories(body: Category) : Flow<Category> = callApi {
-        api.getCategories(body)
-    }
+    fun getCategories(body: List<Category>): Flow<List<Category>> =
+        call { body }
+//        callApi {
+//        api.getCategories(body)
+//    }
 }

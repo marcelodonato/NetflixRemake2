@@ -1,5 +1,6 @@
 package com.example.netflixremake.presentation.home.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.netflixremake.base.BaseViewModel
@@ -11,12 +12,13 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val netflixUseCase: NetflixUseCase) : BaseViewModel() {
 
-    private val _onCategoriesSuccess = MutableLiveData<Category?>()
-    val onCategoriesResult: LiveData<Category?> = _onCategoriesSuccess
+    private val _onCategoriesSuccess = MutableLiveData<List<Category>?>()
+    val onCategoriesResult : LiveData<List<Category>?> = _onCategoriesSuccess
 
-    fun getCategories() = launch {
+    fun getCategories() =launch {
         netflixUseCase.getCategories().onError {
             _onCategoriesSuccess.postValue(null)
+            Log.d("TESTE", error("erro na API ? "))
         }.onSuccess {
             _onCategoriesSuccess.postValue(it)
         }

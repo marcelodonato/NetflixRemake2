@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface NetflixRepository {
 
-    fun getCategories(body: Category): Flow<Category>
+    fun getCategories(body: List<Category>): Flow<List<Category>>
 }

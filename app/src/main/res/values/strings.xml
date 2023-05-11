@@ -3,4 +3,6 @@
     
     <string name="cast">Elenco: %1$s</string>
     <string name="similar">Opções semelhantes</string>
+
+    <string name="public_key_id">"9d2b4c4c-d75b-4ef8-9445-24142894f330"</string>
 </resources>
