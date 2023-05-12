@@ -9,7 +9,6 @@ import com.example.netflixremake.domain.usecase.NetflixUseCase
 import com.example.netflixremake.domain.usecase.NetflixUseCaseImpl
 import com.example.netflixremake.extension.getRetrofit
 import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
-import com.example.netflixremake.security.data.NetworkInterceptor
 import com.example.netflixremake.security.data.SecurityConstants.BASE_URL
 import com.example.netflixremake.security.data.SecurityConstants.CALL_TIMEOUT
 import com.example.netflixremake.security.data.SecurityConstants.READ_TIMEOUT
@@ -47,11 +46,6 @@ val api = module {
     single<NetflixAPI> { getRetrofit().create(NetflixAPI::class.java) }
 }
 
-object NetflixInitializer {
-    fun init() = loadKoinModules(listOf(netflixModule, useCase, dataSource, repository, api))
-}
-
-
 val securityModule = module {
     single<ApiHeaders> { ApiHeadersProvider() }
 
@@ -74,7 +68,6 @@ val securityModule = module {
         }
 
         return OkHttpClient.Builder()
-            .addInterceptor(NetworkInterceptor())
             .addInterceptor(logInterceptor)
             .callTimeout(CALL_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
@@ -93,4 +86,9 @@ val securityModule = module {
     single { provideGson() }
     single { provideHttpClient() }
     single { provideRetrofit(get(), get()) }
+
+}
+
+object NetflixInitializer {
+    fun init() = loadKoinModules(listOf(netflixModule, api, useCase, dataSource, repository))
 }

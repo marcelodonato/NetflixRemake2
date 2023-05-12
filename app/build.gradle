@@ -40,8 +40,9 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
     def coroutinesVersion = "1.0.1"
-    def koin_version ="3.3.2"
+    def koin_version = "3.3.2"
     def retrofit = "2.9.0"
+    def lottie = "3.7.1"
     def retrofitConverterGson = "2.9.0"
 
     implementation 'androidx.core:core-ktx:1.10.0'
@@ -51,7 +52,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
 
 
     //glide
@@ -70,5 +70,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitConverterGson"
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.okhttp3:logging-interceptor:4.2.1"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottie"
 
 }

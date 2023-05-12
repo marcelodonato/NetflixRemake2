@@ -5,16 +5,21 @@ import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter.Comp
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter.Companion.SIMILAR
 import com.google.gson.annotations.SerializedName
 
-data class Movie(@SerializedName("cover_url") val coverUrl: Int) : AdaptableItem {
-    override fun itemType() = MOVIE
-}
-
 data class Category(
+    @SerializedName("id") val id: Int? = null,
     @SerializedName("title") val name: String? = null,
-    @SerializedName("movie") val movieList: List<Movie>
+    @SerializedName("movie") val movieList: List<Movie>? = null
 ) : AdaptableItem {
     override fun itemType() = CATEGORY
 }
+
+data class Movie(
+    @SerializedName("id") val id: Int? = null,
+    @SerializedName("cover_url") val coverUrl: Int
+) : AdaptableItem {
+    override fun itemType() = MOVIE
+}
+
 
 data class MovieSimilar(val coverSimilarUrl: Int) : AdaptableItem {
     override fun itemType() = SIMILAR

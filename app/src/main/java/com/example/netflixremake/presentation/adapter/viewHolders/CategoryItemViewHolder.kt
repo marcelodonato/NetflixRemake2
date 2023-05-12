@@ -20,7 +20,7 @@ class CategoryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
                     clickListener.invoke(items)
                 }
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                categoryAdapter.items = items.movieList
+                categoryAdapter.items = items.movieList.orEmpty()
                 adapter = categoryAdapter
             }
         }

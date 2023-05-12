@@ -3,12 +3,8 @@ package com.example.netflixremake.data.remote
 
 import com.example.netflixremake.data.model.BaseResponseModel
 import com.example.netflixremake.data.model.Category
-import com.example.netflixremake.security.data.SecurityConstants
-import com.google.android.gms.common.api.internal.ApiKey
-import retrofit2.Call
-import retrofit2.http.Body
+import com.example.netflixremake.security.data.SecurityConstants.API_KEY
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface NetflixAPI {
@@ -18,5 +14,5 @@ interface NetflixAPI {
     }
 
     @GET(HOME)
-    suspend fun getCategories(@Body body: List<Category>): BaseResponseModel<List<Category>>
+    suspend fun getCategories(@Query("apiKey") apiKey: String = API_KEY): BaseResponseModel<List<Category>>
 }
