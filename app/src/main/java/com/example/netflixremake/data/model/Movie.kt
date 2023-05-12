@@ -26,9 +26,10 @@ data class MovieSimilar(val coverSimilarUrl: Int) : AdaptableItem {
 }
 
 data class MovieDetails(
-    val coverMovie: Int? = null,
-    val title: String? = null,
-    val desc: String? = null,
-    val cast: String? = null,
-    val moviesSimilar: List<MovieSimilar>? = null,
+    @SerializedName("id") val id : Int? = null,
+    @SerializedName("title") val title: String? = null,
+    @SerializedName("desc") val desc: String? = null,
+    @SerializedName("cast") val cast: String? = null,
+    @SerializedName("cover_url") val coverMovie: Int? = null,
+    @SerializedName("movie") val moviesSimilar: List<MovieSimilar>? = null,
 )
