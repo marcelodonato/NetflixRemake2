@@ -1,7 +1,11 @@
 package com.example.netflixremake.presentation.home.view
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.data.model.Category
 import com.example.netflixremake.databinding.ActivityMainBinding
@@ -28,10 +32,12 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     }
 
     private fun onCategoriesResult(categoriesList: Category?) {
+        binding.load.visibility = View.GONE
         setupRecyclerView(categoriesList)
     }
 
     private fun setupView() {
+        binding.load.visibility = View.VISIBLE
         setupObservable()
     }
 
