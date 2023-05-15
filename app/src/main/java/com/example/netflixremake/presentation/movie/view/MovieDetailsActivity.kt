@@ -1,6 +1,7 @@
 package com.example.netflixremake.presentation.movie.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
@@ -28,6 +29,8 @@ class MovieDetailsActivity : BaseActivity<MovieDetailsViewModel>() {
     }
 
     private fun setupView() {
+        binding.load.visibility = View.VISIBLE
+        binding.container.visibility = View.GONE
         setupObservable()
         setSupportActionBar(binding.toolbarMovieDetails)
         supportActionBar?.title = null
@@ -40,6 +43,8 @@ class MovieDetailsActivity : BaseActivity<MovieDetailsViewModel>() {
     }
 
     private fun onMovieDetailsResult(movieDetails: MovieDetails?) {
+        binding.load.visibility = View.GONE
+        binding.container.visibility = View.VISIBLE
         movieDetails.let {
             setupRecycler(it?.moviesSimilar.orEmpty())
             with(binding) {
