@@ -9,7 +9,7 @@ import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
-import com.example.netflixremake.presentation.movie.MovieDetailsActivity
+import com.example.netflixremake.presentation.movie.view.MovieDetailsActivity
 
 class HomeActivity : BaseActivity<HomeViewModel>() {
 
@@ -38,7 +38,8 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         with(binding) {
             val mainAdapter = NetflixGenericAdapter()
             mainAdapter.clickListener = {
-                setMovieDetails()
+
+                setMovieDetails(mainAdapter.items.lastIndex.toString())
             }
             mainAdapter.items = categories?.category.orEmpty()
             rvMain.adapter = mainAdapter
@@ -46,8 +47,10 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         }
     }
 
-    private fun setMovieDetails() {
-        val intent = Intent(this@HomeActivity, MovieDetailsActivity::class.java)
+    private fun setMovieDetails(id: String) {
+        val intent = Intent(this@HomeActivity, MovieDetailsActivity::class.java).apply {
+            this.putExtra("ID_MOVIE", id)
+        }
         startActivity(intent)
     }
 }

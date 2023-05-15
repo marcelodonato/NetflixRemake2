@@ -10,7 +10,7 @@ import com.example.netflixremake.databinding.ActivitySplashBinding
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.home.view.HomeActivity
 
-class SplashActivity: BaseActivity<BaseViewModel>() {
+class SplashActivity : BaseActivity<BaseViewModel>() {
 
 
     override val binding by viewBinding(ActivitySplashBinding::inflate)
@@ -18,7 +18,7 @@ class SplashActivity: BaseActivity<BaseViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed(
-            { startHomeActivity()}, 4000.toLong()
+            { startHomeActivity() }, 4000.toLong()
         )
     }
 

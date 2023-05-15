@@ -25,7 +25,10 @@ data class Movie(
     override fun itemType() = MOVIE
 }
 
-data class MovieSimilar(val coverSimilarUrl: Int) : AdaptableItem {
+data class MovieSimilar(
+    @SerializedName("id") val id: Int = 0,
+    @SerializedName("cover_url") val coverSimilarUrl: String? = null
+) : AdaptableItem {
     override fun itemType() = SIMILAR
 }
 
@@ -34,6 +37,6 @@ data class MovieDetails(
     @SerializedName("title") val title: String? = null,
     @SerializedName("desc") val desc: String? = null,
     @SerializedName("cast") val cast: String? = null,
-    @SerializedName("cover_url") val coverMovie: Int? = null,
+    @SerializedName("cover_url") val coverMovie: String? = null,
     @SerializedName("movie") val moviesSimilar: List<MovieSimilar>? = null,
 )

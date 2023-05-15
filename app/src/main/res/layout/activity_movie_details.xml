@@ -22,16 +22,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ImageView
                 android:id="@+id/movieImg"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/shadows"
                 app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/movie_4" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/shadows"
+                app:layout_constraintBottom_toBottomOf="@id/movieImg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/movieImg"
+                app:layout_constraintTop_toTopOf="@id/movieImg" />
 
             <ImageView
                 android:layout_width="72dp"

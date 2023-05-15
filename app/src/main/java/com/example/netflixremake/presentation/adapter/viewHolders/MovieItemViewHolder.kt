@@ -13,11 +13,11 @@ class MovieItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var binding = MovieItemBinding.bind(itemView)
 
     fun bindWith(item: Movie, clickListener: (AdaptableItem) -> Unit) {
-
         with(binding) {
             Picasso.get().load(item.coverUrl).placeholder(R.drawable.placeholder_bg)
                 .error(R.drawable.placeholder_bg).into(imgCover)
             cvContainerMovie.setOnClickListener {
+                val position = adapterPosition
                 clickListener.invoke(item)
             }
         }
