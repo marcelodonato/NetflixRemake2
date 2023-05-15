@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso
 
 class MovieItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+
     private var binding = MovieItemBinding.bind(itemView)
 
     fun bindWith(item: Movie, clickListener: (AdaptableItem) -> Unit) {
@@ -17,7 +18,6 @@ class MovieItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             Picasso.get().load(item.coverUrl).placeholder(R.drawable.placeholder_bg)
                 .error(R.drawable.placeholder_bg).into(imgCover)
             cvContainerMovie.setOnClickListener {
-                val position = adapterPosition
                 clickListener.invoke(item)
             }
         }

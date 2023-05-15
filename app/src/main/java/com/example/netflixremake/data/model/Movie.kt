@@ -19,7 +19,7 @@ data class CategoryItem(
 }
 
 data class Movie(
-    @SerializedName("id") val id: Int = 0,
+    @SerializedName("id") val id: Int? = 0,
     @SerializedName("cover_url") val coverUrl: String? = null
 ) : AdaptableItem {
     override fun itemType() = MOVIE

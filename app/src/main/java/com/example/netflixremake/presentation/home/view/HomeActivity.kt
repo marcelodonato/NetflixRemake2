@@ -10,6 +10,7 @@ import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
 import com.example.netflixremake.presentation.movie.view.MovieDetailsActivity
+import kotlin.random.Random
 
 class HomeActivity : BaseActivity<HomeViewModel>() {
 
@@ -34,12 +35,16 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         setupObservable()
     }
 
+    private fun randomIndex(): String {
+
+        return Random.nextInt(1, 4).toString()
+    }
+
     private fun setupRecyclerView(categories: Category?) {
         with(binding) {
             val mainAdapter = NetflixGenericAdapter()
             mainAdapter.clickListener = {
-
-                setMovieDetails(mainAdapter.items.lastIndex.toString())
+                setMovieDetails(randomIndex())
             }
             mainAdapter.items = categories?.category.orEmpty()
             rvMain.adapter = mainAdapter
