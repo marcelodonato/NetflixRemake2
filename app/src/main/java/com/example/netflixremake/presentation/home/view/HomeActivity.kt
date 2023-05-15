@@ -2,10 +2,8 @@ package com.example.netflixremake.presentation.home.view
 
 import android.content.Intent
 import android.os.Bundle
-import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.data.model.Category
-import com.example.netflixremake.data.model.Movie
 import com.example.netflixremake.databinding.ActivityMainBinding
 import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.extension.viewBinding

@@ -6,10 +6,7 @@ import androidx.annotation.IntDef
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.netflixremake.R
-import com.example.netflixremake.data.model.AdaptableItem
-import com.example.netflixremake.data.model.Category
-import com.example.netflixremake.data.model.Movie
-import com.example.netflixremake.data.model.MovieSimilar
+import com.example.netflixremake.data.model.*
 import com.example.netflixremake.presentation.adapter.viewHolders.CategoryItemViewHolder
 import com.example.netflixremake.presentation.adapter.viewHolders.MovieItemSimilarViewHolder
 import com.example.netflixremake.presentation.adapter.viewHolders.MovieItemViewHolder
@@ -50,7 +47,7 @@ class NetflixGenericAdapter(var clickListener: (AdaptableItem) -> Unit = {}) :
         val item = items[position]
         when (holder) {
             is MovieItemViewHolder -> holder.bindWith(item as Movie, clickListener)
-            is CategoryItemViewHolder -> holder.bindWith(item as Category, clickListener)
+            is CategoryItemViewHolder -> holder.bindWith(item as CategoryItem, clickListener)
             is MovieItemSimilarViewHolder -> holder.bindWith(item as MovieSimilar, clickListener)
 
             else -> throw NullPointerException("NetflixGenericAdapter viewHolder is null")
