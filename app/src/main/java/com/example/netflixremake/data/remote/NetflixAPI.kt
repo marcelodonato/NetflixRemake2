@@ -14,5 +14,5 @@ interface NetflixAPI {
     }
 
     @GET(HOME)
-    suspend fun getCategories(@Query("apiKey") apiKey: String = API_KEY): BaseResponseModel<List<Category>>
+    suspend fun getCategories(@Query("apiKey") apiKey: String = API_KEY): BaseResponseModel<Category>
 }

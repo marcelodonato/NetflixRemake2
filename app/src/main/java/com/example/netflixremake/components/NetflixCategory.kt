@@ -27,12 +27,12 @@ class NetflixCategory : ConstraintLayout {
 
     fun setupWith(items: Category, callback: (AdaptableItem) -> Unit) {
         with(binding) {
-            tvTitle.text = items.name
+//            tvTitle.text = items
             rvCategory.apply {
                 val adapterCategory = NetflixGenericAdapter()
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = adapterCategory
-                adapterCategory.items = items.movieList.orEmpty()
+                adapterCategory.items = items.category.orEmpty()
                 adapterCategory.clickListener = { adaptableItem ->
                     callback(adaptableItem)
                 }

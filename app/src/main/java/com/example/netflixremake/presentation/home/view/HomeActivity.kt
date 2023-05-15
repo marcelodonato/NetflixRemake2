@@ -23,12 +23,12 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         viewModel.getCategories()
         setupView()
     }
-    
+
     private fun setupObservable() = with(viewModel) {
         onCategoriesResult.observe(this@HomeActivity, ::onCategoriesResult)
     }
 
-    private fun onCategoriesResult(categoriesList: List<Category>?) {
+    private fun onCategoriesResult(categoriesList: Category?) {
         setupRecyclerView(categoriesList)
     }
 
@@ -36,13 +36,13 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         setupObservable()
     }
 
-    private fun setupRecyclerView(categories: List<Category>?) {
+    private fun setupRecyclerView(categories: Category?) {
         with(binding) {
             val mainAdapter = NetflixGenericAdapter()
             mainAdapter.clickListener = {
                 setMovieDetails()
             }
-            mainAdapter.items = categories.orEmpty()
+            mainAdapter.items = categories?.category.orEmpty()
             rvMain.adapter = mainAdapter
 
         }

@@ -14,36 +14,36 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val netflixUseCase: NetflixUseCase) : BaseViewModel() {
 
-    private val _onCategoriesSuccess = MutableLiveData<List<Category>?>()
-    val onCategoriesResult : LiveData<List<Category>?> = _onCategoriesSuccess
+    private val _onCategoriesSuccess = MutableLiveData<Category?>()
+    val onCategoriesResult: LiveData<Category?> = _onCategoriesSuccess
 
 
-    fun mockMovies(): List<Movie> {
+    private fun mockMovies(): List<Movie> {
         return listOf(
             Movie(1, R.drawable.movie_4),
-            Movie(1,R.drawable.placeholder_bg),
-            Movie(1,R.drawable.movie),
-            Movie(1,R.drawable.placeholder_bg),
-            Movie(1,R.drawable.placeholder_bg),
-            Movie(1,R.drawable.movie_4),
-            Movie(1,R.drawable.movie),
+            Movie(1, R.drawable.placeholder_bg),
+            Movie(1, R.drawable.movie),
+            Movie(1, R.drawable.placeholder_bg),
+            Movie(1, R.drawable.placeholder_bg),
+            Movie(1, R.drawable.movie_4),
+            Movie(1, R.drawable.movie),
         )
     }
 
-    fun mockCategories(): List<Category> {
-        return listOf(
-            Category(1,"Nome da categoria1", mockMovies()),
-            Category(1,"Nome da categoria2", mockMovies()),
-            Category(1,"Nome da categoria3", mockMovies()),
-            Category(1,"Nome da categoria4", mockMovies()),
-            Category(1,"Nome da categoria4", mockMovies()),
-            Category(1,"Nome da categoria4", mockMovies()),
-        )
-    }
+//    private fun mockCategories(): List<Category> {
+//        return listOf(
+//            Category(1,"Nome da categoria1", mockMovies()),
+//            Category(1,"Nome da categoria2", mockMovies()),
+//            Category(1,"Nome da categoria3", mockMovies()),
+//            Category(1,"Nome da categoria4", mockMovies()),
+//            Category(1,"Nome da categoria4", mockMovies()),
+//            Category(1,"Nome da categoria4", mockMovies()),
+//        )
+//    }
 
-    fun getCategories() =launch {
-        val body = mockCategories()
-        netflixUseCase.getCategories(body).onError {
+    fun getCategories() = launch {
+//        val body = mockCategories()
+        netflixUseCase.getCategories().onError {
             _onCategoriesSuccess.postValue(null)
             Log.d("TESTE", error(it))
         }.onSuccess {

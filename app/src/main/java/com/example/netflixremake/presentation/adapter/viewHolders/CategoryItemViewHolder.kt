@@ -13,14 +13,14 @@ class CategoryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun bindWith(items: Category, clickListener: (AdaptableItem) -> Unit) {
         with(binding) {
-            tvTitle.text = items.name
+//            tvTitle.text = items.name
             rvCategory.apply {
                 val categoryAdapter = NetflixGenericAdapter()
                 categoryAdapter.clickListener = {
-                    clickListener.invoke(items)
+//                    clickListener.invoke(items)
                 }
                 layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                categoryAdapter.items = items.movieList.orEmpty()
+                categoryAdapter.items = items.category.orEmpty()
                 adapter = categoryAdapter
             }
         }
