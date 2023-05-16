@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -39,12 +40,17 @@ android {
 dependencies {
 
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    def firebase_auth = "21.0.1"
+    def firebase_firestore = "24.0.0"
+    def firebase_database = "20.0.3"
+    def firebase_analitics = "20.0.2"
     def coroutinesVersion = "1.0.1"
     def koin_version = "3.3.2"
     def retrofit = "2.9.0"
     def lottie = "3.7.1"
     def retrofitConverterGson = "2.9.0"
 
+    implementation 'com.google.firebase:firebase-core:9.6.1'
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -52,6 +58,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+    //FireBase
+    implementation "com.google.firebase:firebase-auth:$firebase_auth"
+    implementation "com.google.firebase:firebase-firestore:$firebase_firestore"
+    implementation "com.google.firebase:firebase-database:$firebase_database"
+    implementation "com.google.firebase:firebase-analytics:$firebase_analitics"
 
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
