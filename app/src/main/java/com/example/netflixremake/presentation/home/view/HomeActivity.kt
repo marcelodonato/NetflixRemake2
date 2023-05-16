@@ -22,7 +22,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        NetflixInitializer.init()
         viewModel.getCategories()
         setupView()
     }

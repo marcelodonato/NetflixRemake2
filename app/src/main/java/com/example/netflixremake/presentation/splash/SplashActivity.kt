@@ -7,8 +7,10 @@ import android.os.Looper
 import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.base.BaseViewModel
 import com.example.netflixremake.databinding.ActivitySplashBinding
+import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.home.view.HomeActivity
+import com.example.netflixremake.presentation.login.view.LoginActivity
 
 class SplashActivity : BaseActivity<BaseViewModel>() {
 
@@ -17,13 +19,21 @@ class SplashActivity : BaseActivity<BaseViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        NetflixInitializer.init()
         Handler(Looper.getMainLooper()).postDelayed(
-            { startHomeActivity() }, 4000.toLong()
+            { startLoginActivity() }, 4000.toLong()
         )
     }
 
     private fun startHomeActivity() {
         val intent = Intent(baseContext, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish()
+    }
+
+    private fun startLoginActivity() {
+        val intent = Intent(baseContext, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()
