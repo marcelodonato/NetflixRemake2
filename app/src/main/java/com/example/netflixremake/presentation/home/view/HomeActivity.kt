@@ -13,12 +13,16 @@ import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
+import com.example.netflixremake.presentation.login.view.LoginActivity
 import com.example.netflixremake.presentation.movie.view.MovieDetailsActivity
+import com.google.firebase.auth.FirebaseAuth
+import org.koin.core.definition.indexKey
 import kotlin.random.Random
 
 class HomeActivity : BaseActivity<HomeViewModel>() {
 
     override val binding by viewBinding(ActivityMainBinding::inflate)
+    private lateinit var user: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +40,12 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     }
 
     private fun setupView() {
-        binding.load.visibility = View.VISIBLE
+        with(binding) {
+            load.visibility = View.VISIBLE
+            logout.setOnClickListener {
+                logout()
+            }
+        }
         setupObservable()
     }
 
@@ -55,6 +64,13 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             rvMain.adapter = mainAdapter
 
         }
+    }
+
+    private fun logout() {
+        user = FirebaseAuth.getInstance()
+        user.signOut()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 
     private fun setMovieDetails(id: String) {

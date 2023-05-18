@@ -11,9 +11,9 @@ import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.home.view.HomeActivity
 import com.example.netflixremake.presentation.login.view.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : BaseActivity<BaseViewModel>() {
-
 
     override val binding by viewBinding(ActivitySplashBinding::inflate)
 
@@ -21,8 +21,17 @@ class SplashActivity : BaseActivity<BaseViewModel>() {
         super.onCreate(savedInstanceState)
         NetflixInitializer.init()
         Handler(Looper.getMainLooper()).postDelayed(
-            { startLoginActivity() }, 4000.toLong()
+            { checkConnected() }, 4000.toLong()
         )
+    }
+
+    private fun checkConnected() {
+        val user = FirebaseAuth.getInstance().currentUser;
+        if (user != null) {
+            startHomeActivity()
+        } else {
+            startLoginActivity()
+        }
     }
 
     private fun startHomeActivity() {
