@@ -27,7 +27,7 @@ class LoginActivity : BaseActivity<BaseViewModel>() {
 
     private fun setupView() {
         with(binding) {
-           btnLogin.setOnClickListener {
+            btnLogin.setOnClickListener {
                 validateFields()
             }
             tvRegister.setOnClickListener {
@@ -76,12 +76,10 @@ class LoginActivity : BaseActivity<BaseViewModel>() {
         finish()
     }
 
-
     private fun startRegisterActivity() {
         val intent = Intent(baseContext, RegisterActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()
     }
-
 }

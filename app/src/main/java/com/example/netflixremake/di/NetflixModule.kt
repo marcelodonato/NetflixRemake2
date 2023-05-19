@@ -10,6 +10,7 @@ import com.example.netflixremake.domain.usecase.NetflixUseCaseImpl
 import com.example.netflixremake.extension.getRetrofit
 import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
 import com.example.netflixremake.presentation.movie.viewModel.MovieDetailsViewModel
+import com.example.netflixremake.presentation.register.viewmodel.RegisterViewModel
 import com.example.netflixremake.security.data.SecurityConstants.BASE_URL
 import com.example.netflixremake.security.data.SecurityConstants.CALL_TIMEOUT
 import com.example.netflixremake.security.data.SecurityConstants.READ_TIMEOUT
@@ -30,6 +31,7 @@ import java.util.concurrent.TimeUnit
 val netflixModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel {MovieDetailsViewModel(get())}
+    viewModel {RegisterViewModel()}
 }
 
 val useCase = module {

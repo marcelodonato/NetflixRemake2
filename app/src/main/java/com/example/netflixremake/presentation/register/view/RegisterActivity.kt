@@ -13,9 +13,10 @@ import com.example.netflixremake.extension.validate
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.home.view.HomeActivity
 import com.example.netflixremake.presentation.login.view.LoginActivity
+import com.example.netflixremake.presentation.register.viewmodel.RegisterViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterActivity : BaseActivity<BaseViewModel>() {
+class RegisterActivity : BaseActivity<RegisterViewModel>() {
     override val binding by viewBinding(ActivityRegisterBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,21 +55,28 @@ class RegisterActivity : BaseActivity<BaseViewModel>() {
             confirmPassword -> binding.etConfirmPassword.error =
                 getString(R.string.generic_error_edit_text)
             else -> {
-                registerToFirebase(
+                viewModel.registerToFirebase(
                     binding.etEmailRegister.getEditText(),
                     binding.etPasswordRegister.getEditText()
                 )
-                startHomeActivity()
+
+                setupObservable()
             }
         }
     }
 
-    private fun registerToFirebase(email: String, password: String) {
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { finish() }
-            .addOnFailureListener { errorCase() }
+    private fun setupObservable() =  with(viewModel) {
+        onRegisterResult.observe(this@RegisterActivity, ::onRegisterResult)
     }
 
+    private fun onRegisterResult(result : Boolean){
+        if(result){
+            finish()
+            startHomeActivity()
+        }else{
+            errorCase()
+        }
+    }
 
     private fun startLoginActivity() {
         val intent = Intent(baseContext, LoginActivity::class.java)
