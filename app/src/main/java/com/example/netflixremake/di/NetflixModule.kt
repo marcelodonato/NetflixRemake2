@@ -9,6 +9,7 @@ import com.example.netflixremake.domain.usecase.NetflixUseCase
 import com.example.netflixremake.domain.usecase.NetflixUseCaseImpl
 import com.example.netflixremake.extension.getRetrofit
 import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
+import com.example.netflixremake.presentation.login.viewmodel.LoginViewModel
 import com.example.netflixremake.presentation.movie.viewModel.MovieDetailsViewModel
 import com.example.netflixremake.presentation.register.viewmodel.RegisterViewModel
 import com.example.netflixremake.security.data.SecurityConstants.BASE_URL
@@ -32,6 +33,7 @@ val netflixModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel {MovieDetailsViewModel(get())}
     viewModel {RegisterViewModel()}
+    viewModel {LoginViewModel()}
 }
 
 val useCase = module {

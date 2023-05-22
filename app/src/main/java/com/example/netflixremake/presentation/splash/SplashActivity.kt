@@ -11,6 +11,8 @@ import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.home.view.HomeActivity
 import com.example.netflixremake.presentation.login.view.LoginActivity
+import com.gaelmarhic.quadrant.QuadrantConstants.HOME_ACTIVITY
+import com.gaelmarhic.quadrant.QuadrantConstants.LOGIN_ACTIVITY
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : BaseActivity<BaseViewModel>() {
@@ -28,23 +30,9 @@ class SplashActivity : BaseActivity<BaseViewModel>() {
     private fun checkConnected() {
         val user = FirebaseAuth.getInstance().currentUser;
         if (user != null) {
-            startHomeActivity()
+            navigateToActivity(HOME_ACTIVITY)
         } else {
-            startLoginActivity()
+            navigateToActivity(LOGIN_ACTIVITY)
         }
-    }
-
-    private fun startHomeActivity() {
-        val intent = Intent(baseContext, HomeActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-        finish()
-    }
-
-    private fun startLoginActivity() {
-        val intent = Intent(baseContext, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-        finish()
     }
 }

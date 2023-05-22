@@ -7,7 +7,6 @@ import com.google.firebase.auth.FirebaseAuth
 
 class RegisterViewModel : BaseViewModel() {
 
-
     private val _onRegisterSuccess = MutableLiveData<Boolean>()
     val onRegisterResult: LiveData<Boolean> = _onRegisterSuccess
 

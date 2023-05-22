@@ -4,12 +4,13 @@
     <string name="cast">Elenco: %1$s</string>
     <string name="similar">Opções semelhantes</string>
 
-    <!--Login Screen-->
+    <string name="new_to_netflix">New to Netflix? Sign up now.</string>
+    <string name="enter">ENTER</string>
+    <string name="password">password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register">Register</string>
     <string name="email">E-mail</string>
-    <string name="password">Senha</string>
-    <string name="login_button_text">Entrar</string>
-    <string name="does_not_have_account">Ainda não possui uma conta? <b>Registar-se</b></string>
-    <!--    Message Error App-->
+    <string name="already_has_account">already has account ? click here.</string>
     <string name="generic_error_edit_text">O campo %s não pode estar em branco</string>
     <string name="email_error">Email incorreto </string>
     <string name="password_error">Senha incorreta</string>

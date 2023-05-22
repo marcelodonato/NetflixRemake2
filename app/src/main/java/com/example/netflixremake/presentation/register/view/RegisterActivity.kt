@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
-import com.example.netflixremake.base.BaseViewModel
 import com.example.netflixremake.databinding.ActivityRegisterBinding
 import com.example.netflixremake.extension.confirmIfEmailIsValid
 import com.example.netflixremake.extension.getEditText
@@ -14,7 +13,8 @@ import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.home.view.HomeActivity
 import com.example.netflixremake.presentation.login.view.LoginActivity
 import com.example.netflixremake.presentation.register.viewmodel.RegisterViewModel
-import com.google.firebase.auth.FirebaseAuth
+import com.gaelmarhic.quadrant.QuadrantConstants.HOME_ACTIVITY
+import com.gaelmarhic.quadrant.QuadrantConstants.LOGIN_ACTIVITY
 
 class RegisterActivity : BaseActivity<RegisterViewModel>() {
     override val binding by viewBinding(ActivityRegisterBinding::inflate)
@@ -27,14 +27,13 @@ class RegisterActivity : BaseActivity<RegisterViewModel>() {
     private fun setupView() {
         with(binding) {
             tvLogin.setOnClickListener {
-                startLoginActivity()
+                navigateToActivity(LOGIN_ACTIVITY)
             }
             btnRegister.setOnClickListener {
                 validateFields()
             }
         }
     }
-
 
     private fun validateFields() {
         val email = binding.etEmailRegister.validate()
@@ -59,40 +58,16 @@ class RegisterActivity : BaseActivity<RegisterViewModel>() {
                     binding.etEmailRegister.getEditText(),
                     binding.etPasswordRegister.getEditText()
                 )
-
-                setupObservable()
+                onRegisterResult()
             }
         }
     }
 
-    private fun setupObservable() =  with(viewModel) {
-        onRegisterResult.observe(this@RegisterActivity, ::onRegisterResult)
-    }
-
-    private fun onRegisterResult(result : Boolean){
-        if(result){
-            finish()
-            startHomeActivity()
-        }else{
-            errorCase()
+    private fun onRegisterResult() {
+        if (viewModel.onRegisterResult.value == true) {
+            navigateToActivity(HOME_ACTIVITY)
+        } else {
+            Toast.makeText(this, getString(R.string.unexpected_error), Toast.LENGTH_SHORT).show()
         }
-    }
-
-    private fun startLoginActivity() {
-        val intent = Intent(baseContext, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-        finish()
-    }
-
-    private fun startHomeActivity() {
-        val intent = Intent(baseContext, HomeActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-        finish()
-    }
-
-    private fun errorCase() {
-        Toast.makeText(this, getString(R.string.unexpected_error), Toast.LENGTH_SHORT).show()
     }
 }

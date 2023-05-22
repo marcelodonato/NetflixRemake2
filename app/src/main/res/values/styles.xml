@@ -7,4 +7,15 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
+    <style name="generic_text_view">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="generic_button_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
 </resources>
