@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"
-        tools:context=".presentation.home.view.MainActivity">
+        tools:context=".presentation.home.view.HomeActivity">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -31,6 +31,7 @@
             android:paddingStart="10dp"
             android:clipToPadding="false"
             android:paddingEnd="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"

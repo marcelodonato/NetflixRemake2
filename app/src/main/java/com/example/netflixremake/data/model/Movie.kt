@@ -1,7 +1,42 @@
 package com.example.netflixremake.data.model
 
-import androidx.annotation.DrawableRes
+import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter.Companion.CATEGORY
+import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter.Companion.MOVIE
+import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter.Companion.SIMILAR
+import com.google.gson.annotations.SerializedName
 
-data class Movie(@DrawableRes val coverUrl: Int )
+data class Category(
+    @SerializedName("category") val category: List<CategoryItem>? = null,
+)
 
-data class Category(val name: String? = null, val movies: List<Movie>)
+data class CategoryItem(
+    @SerializedName("id") val id: Int = 0,
+    @SerializedName("title") val name: String? = null,
+    @SerializedName("movie") val movieList: List<Movie>? = null
+) : AdaptableItem {
+
+    override fun itemType() = CATEGORY
+}
+
+data class Movie(
+    @SerializedName("id") val id: Int? = 0,
+    @SerializedName("cover_url") val coverUrl: String? = null
+) : AdaptableItem {
+    override fun itemType() = MOVIE
+}
+
+data class MovieSimilar(
+    @SerializedName("id") val id: Int = 0,
+    @SerializedName("cover_url") val coverSimilarUrl: String? = null
+) : AdaptableItem {
+    override fun itemType() = SIMILAR
+}
+
+data class MovieDetails(
+    @SerializedName("id") val id: Int = 0,
+    @SerializedName("title") val title: String? = null,
+    @SerializedName("desc") val desc: String? = null,
+    @SerializedName("cast") val cast: String? = null,
+    @SerializedName("cover_url") val coverMovie: String? = null,
+    @SerializedName("movie") val moviesSimilar: List<MovieSimilar>? = null,
+)

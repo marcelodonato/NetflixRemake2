@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "815845019283",
+    "project_id": "netflix-remake-477e8",
+    "storage_bucket": "netflix-remake-477e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815845019283:android:1207b44ce618966f17c766",
+        "android_client_info": {
+          "package_name": "com.example.netflixremake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815845019283-eqcrqjute63dummebv5pt7v7ejgugnlc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIsO-ZOKEwFtE9fMzhgWdpeKWIXNpfQM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815845019283-eqcrqjute63dummebv5pt7v7ejgugnlc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
