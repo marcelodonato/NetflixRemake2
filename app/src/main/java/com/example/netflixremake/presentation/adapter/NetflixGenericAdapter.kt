@@ -48,7 +48,7 @@ class NetflixGenericAdapter(var clickListener: (AdaptableItem) -> Unit = {}) :
         when (holder) {
             is MovieItemViewHolder -> holder.bindWith(item as Movie, clickListener)
             is CategoryItemViewHolder -> holder.bindWith(item as CategoryItem, clickListener)
-            is MovieItemSimilarViewHolder -> holder.bindWith(item as MovieSimilar)
+            is MovieItemSimilarViewHolder -> holder.bindWith(item as MovieSimilar, clickListener)
 
             else -> throw NullPointerException("NetflixGenericAdapter viewHolder is null")
         }

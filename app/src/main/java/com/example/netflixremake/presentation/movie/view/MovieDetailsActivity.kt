@@ -1,5 +1,6 @@
 package com.example.netflixremake.presentation.movie.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,6 +13,7 @@ import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 import com.example.netflixremake.presentation.movie.viewModel.MovieDetailsViewModel
 import com.squareup.picasso.Picasso
+import kotlin.random.Random
 
 class MovieDetailsActivity : BaseActivity<MovieDetailsViewModel>() {
 
@@ -61,11 +63,26 @@ class MovieDetailsActivity : BaseActivity<MovieDetailsViewModel>() {
         with(binding) {
             rvMovieSimilar.apply {
                 val adapterMovies = NetflixGenericAdapter()
+                adapterMovies.clickListener = {
+                    setMovieDetails(randomIndex())
+                }
                 layoutManager = GridLayoutManager(this@MovieDetailsActivity, 3)
                 adapterMovies.items = moviesSimilar
                 adapter = adapterMovies
 
             }
         }
+    }
+
+    private fun randomIndex(): String {
+        return Random.nextInt(1, 4).toString()
+    }
+
+    private fun setMovieDetails(id: String) {
+        val intent = Intent(this@MovieDetailsActivity, MovieDetailsActivity::class.java).apply {
+            this.putExtra("ID_MOVIE", id)
+        }
+        startActivity(intent)
+        finish()
     }
 }

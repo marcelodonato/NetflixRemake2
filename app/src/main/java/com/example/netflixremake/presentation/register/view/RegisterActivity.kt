@@ -1,6 +1,5 @@
 package com.example.netflixremake.presentation.register.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.netflixremake.R
@@ -8,10 +7,8 @@ import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.databinding.ActivityRegisterBinding
 import com.example.netflixremake.extension.confirmIfEmailIsValid
 import com.example.netflixremake.extension.getEditText
-import com.example.netflixremake.extension.validate
+import com.example.netflixremake.extension.isValid
 import com.example.netflixremake.extension.viewBinding
-import com.example.netflixremake.presentation.home.view.HomeActivity
-import com.example.netflixremake.presentation.login.view.LoginActivity
 import com.example.netflixremake.presentation.register.viewmodel.RegisterViewModel
 import com.gaelmarhic.quadrant.QuadrantConstants.HOME_ACTIVITY
 import com.gaelmarhic.quadrant.QuadrantConstants.LOGIN_ACTIVITY
@@ -36,8 +33,8 @@ class RegisterActivity : BaseActivity<RegisterViewModel>() {
     }
 
     private fun validateFields() {
-        val email = binding.etEmailRegister.validate()
-        val password = binding.etPasswordRegister.validate()
+        val email = binding.etEmailRegister.isValid()
+        val password = binding.etPasswordRegister.isValid()
         val confirmPassword =
             binding.etConfirmPassword.getEditText() != binding.etPasswordRegister.getEditText()
         val passwordLength = binding.etPasswordRegister.length() !in 6..63

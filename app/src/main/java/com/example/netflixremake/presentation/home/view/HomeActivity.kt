@@ -50,7 +50,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     }
 
     private fun randomIndex(): String {
-
         return Random.nextInt(1, 4).toString()
     }
 
@@ -66,6 +65,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         }
     }
 
+    // passar para viewmodel
     private fun logout() {
         user = FirebaseAuth.getInstance()
         user.signOut()
@@ -79,4 +79,5 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         }
         startActivity(intent)
     }
+
 }
