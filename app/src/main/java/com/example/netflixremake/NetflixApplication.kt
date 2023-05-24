@@ -1,6 +1,8 @@
 package com.example.netflixremake
 
 import android.app.Application
+import com.example.netflixremake.di.LoginInitializer
+import com.example.netflixremake.di.NetflixInitializer
 import com.example.netflixremake.di.securityModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -13,6 +15,8 @@ class NetflixApplication : Application() {
             androidLogger()
             androidContext(this@NetflixApplication)
             modules(securityModule)
+            NetflixInitializer.init()
+            LoginInitializer.init()
         }
     }
 }

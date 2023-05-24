@@ -61,7 +61,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             }
             mainAdapter.items = categories?.category.orEmpty()
             rvMain.adapter = mainAdapter
-
         }
     }
 
@@ -79,5 +78,4 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         }
         startActivity(intent)
     }
-
 }

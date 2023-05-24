@@ -19,8 +19,6 @@ class SplashActivity : BaseActivity<BaseViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        NetflixInitializer.init()
-        LoginInitializer.init()
         Handler(Looper.getMainLooper()).postDelayed(
             { checkConnected() }, 4000L
         )
