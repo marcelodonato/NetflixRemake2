@@ -64,7 +64,7 @@ class RegisterActivity : BaseActivity<RegisterViewModel>() {
         }
     }
 
-    private fun onRegisterResult(result : Boolean) {
+    private fun onRegisterResult(result: Boolean) {
         if (result) {
             navigateToActivity(HOME_ACTIVITY)
         } else {
