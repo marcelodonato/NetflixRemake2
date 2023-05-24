@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.netflixremake.base.BaseViewModel
 import com.example.netflixremake.data.model.Category
-import com.example.netflixremake.domain.usecase.NetflixUseCase
+import com.example.netflixremake.domain.movies.usecase.NetflixUseCase
 import com.example.netflixremake.extension.onError
 import com.example.netflixremake.extension.onSuccess
 import kotlinx.coroutines.launch

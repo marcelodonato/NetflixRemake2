@@ -1,4 +1,4 @@
-package com.example.netflixremake.domain.repository
+package com.example.netflixremake.domain.movies.repository
 
 import com.example.netflixremake.data.model.Category
 import com.example.netflixremake.data.model.MovieDetails

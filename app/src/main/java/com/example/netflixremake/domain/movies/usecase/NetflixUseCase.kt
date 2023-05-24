@@ -1,4 +1,4 @@
-package com.example.netflixremake.domain.usecase
+package com.example.netflixremake.domain.movies.usecase
 
 import com.example.netflixremake.data.model.Category
 import com.example.netflixremake.data.model.MovieDetails

@@ -1,6 +1,6 @@
-package com.example.netflixremake.domain.usecase
+package com.example.netflixremake.domain.movies.usecase
 
-import com.example.netflixremake.domain.repository.NetflixRepository
+import com.example.netflixremake.domain.movies.repository.NetflixRepository
 
 class NetflixUseCaseImpl(private val netflixRepository: NetflixRepository) : NetflixUseCase {
     override suspend fun getCategories() = netflixRepository.getCategories()

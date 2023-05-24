@@ -1,10 +1,7 @@
 package com.example.netflixremake
 
 import android.app.Application
-import com.example.netflixremake.di.LoginInitializer
-import com.example.netflixremake.di.NetflixInitializer
-import com.example.netflixremake.di.RegisterInitializer
-import com.example.netflixremake.di.securityModule
+import com.example.netflixremake.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,6 +13,7 @@ class NetflixApplication : Application() {
             androidLogger()
             androidContext(this@NetflixApplication)
             modules(securityModule)
+            SplashInitializer.init()
             NetflixInitializer.init()
             LoginInitializer.init()
             RegisterInitializer.init()

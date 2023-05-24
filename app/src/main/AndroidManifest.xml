@@ -14,7 +14,7 @@
         android:theme="@style/Base.Theme.NetflixRemake">
 
         <activity
-            android:name=".presentation.splash.SplashActivity"
+            android:name=".presentation.splash.view.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
