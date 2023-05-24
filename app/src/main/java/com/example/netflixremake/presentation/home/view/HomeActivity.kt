@@ -12,7 +12,6 @@ import com.example.netflixremake.presentation.adapter.NetflixGenericAdapter
 import com.example.netflixremake.presentation.home.viewmodel.HomeViewModel
 import com.example.netflixremake.presentation.login.view.LoginActivity
 import com.example.netflixremake.presentation.movie.view.MovieDetailsActivity
-import com.google.firebase.auth.FirebaseAuth
 import kotlin.random.Random
 
 class HomeActivity : BaseActivity<HomeViewModel>() {
@@ -22,7 +21,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     }
 
     override val binding by viewBinding(ActivityMainBinding::inflate)
-    private lateinit var user: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +30,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     private fun setupObservable() = with(viewModel) {
         onCategoriesResult.observe(this@HomeActivity, ::onCategoriesResult)
+        onLogoutResult.observe(this@HomeActivity, ::onLogoutResult)
     }
 
     private fun onCategoriesResult(categoriesList: Category?) {
@@ -41,12 +40,12 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     private fun setupView() {
         with(binding) {
+            setupObservable()
             load.visibility = View.VISIBLE
             logout.setOnClickListener {
-                logout()
+                viewModel.logoutUser()
             }
         }
-        setupObservable()
     }
 
     private fun randomIndex(): String {
@@ -64,12 +63,10 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         }
     }
 
-    // passar para viewmodel
-    private fun logout() {
-        user = FirebaseAuth.getInstance()
-        user.signOut()
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
+    private fun onLogoutResult(result: Boolean) {
+        if (result) {
+            startActivity(LoginActivity.getStartIntent(this@HomeActivity))
+        }
     }
 
     private fun setMovieDetails(id: String) {

@@ -12,12 +12,10 @@ import retrofit2.http.Query
 interface NetflixAPI {
 
     companion object {
-        const val HOME = "home"
+
         const val MOVIE_DETAILS = "movie/{id}"
     }
 
-    @GET(HOME)
-    suspend fun getCategories(@Query("apiKey") apiKey: String = API_KEY): Category
 
     @GET(MOVIE_DETAILS)
     suspend fun getMovieDetails(@Path("id") id: String? = null ,@Query("apiKey") apiKey: String =  API_KEY): MovieDetails

@@ -23,7 +23,6 @@ class SplashViewModel(private val splashUseCase: SplashUseCase) : BaseViewModel(
              } else{
                  _onVerifySuccess.postValue(false)
              }
-
          }
 
 

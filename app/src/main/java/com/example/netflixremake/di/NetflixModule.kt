@@ -15,7 +15,6 @@ import org.koin.dsl.module
 
 
 val netflixModule = module {
-    viewModel { HomeViewModel(get()) }
     viewModel { MovieDetailsViewModel(get()) }
 }
 

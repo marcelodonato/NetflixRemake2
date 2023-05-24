@@ -14,6 +14,7 @@ class NetflixApplication : Application() {
             androidContext(this@NetflixApplication)
             modules(securityModule)
             SplashInitializer.init()
+            HomeInitializer.init()
             NetflixInitializer.init()
             LoginInitializer.init()
             RegisterInitializer.init()

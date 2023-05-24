@@ -5,6 +5,5 @@ import com.example.netflixremake.data.model.MovieDetails
 import kotlinx.coroutines.flow.Flow
 
 interface NetflixUseCase {
-    suspend fun getCategories(): Flow<Category>
     suspend fun getMovieDetails(body : String?): Flow<MovieDetails>
 }
