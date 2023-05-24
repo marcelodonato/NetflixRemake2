@@ -24,11 +24,3 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseViewModel() {
         }
     }
 }
-
-fun loginFirebase(email: String, password: String) {
-    val firebase = FirebaseAuth.getInstance()
-    firebase.signInWithEmailAndPassword(email, password)
-        .addOnCompleteListener {
-//                _onLoginSuccess.postValue(it.isSuccessful)
-        }
-}
