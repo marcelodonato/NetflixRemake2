@@ -1,16 +1,25 @@
 package com.example.netflixremake.presentation.login.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.netflixremake.R
 import com.example.netflixremake.base.BaseActivity
 import com.example.netflixremake.databinding.ActivityLoginBinding
-import com.example.netflixremake.extension.*
+import com.example.netflixremake.extension.confirmIfEmailIsValid
+import com.example.netflixremake.extension.getEditText
+import com.example.netflixremake.extension.isValid
+import com.example.netflixremake.extension.viewBinding
 import com.example.netflixremake.presentation.login.viewmodel.LoginViewModel
 import com.gaelmarhic.quadrant.QuadrantConstants.HOME_ACTIVITY
 import com.gaelmarhic.quadrant.QuadrantConstants.REGISTER_ACTIVITY
 
 class LoginActivity : BaseActivity<LoginViewModel>() {
+
+    companion object {
+        fun getStartIntent(context: Context) = Intent(context, LoginActivity::class.java)
+    }
 
     override val binding by viewBinding(ActivityLoginBinding::inflate)
 
@@ -51,8 +60,8 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
         }
     }
 
-    private fun onLoginResult (result : Boolean) {
-        if(result) {
+    private fun onLoginResult(result: Boolean) {
+        if (result) {
             navigateToActivity(HOME_ACTIVITY)
             finish()
         } else {

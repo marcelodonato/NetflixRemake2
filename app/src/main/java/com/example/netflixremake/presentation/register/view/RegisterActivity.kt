@@ -1,5 +1,7 @@
 package com.example.netflixremake.presentation.register.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.netflixremake.R
@@ -14,6 +16,11 @@ import com.gaelmarhic.quadrant.QuadrantConstants.HOME_ACTIVITY
 import com.gaelmarhic.quadrant.QuadrantConstants.LOGIN_ACTIVITY
 
 class RegisterActivity : BaseActivity<RegisterViewModel>() {
+
+    companion object {
+        fun getStartIntent(context: Context) = Intent(context, RegisterActivity::class.java)
+    }
+
     override val binding by viewBinding(ActivityRegisterBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {

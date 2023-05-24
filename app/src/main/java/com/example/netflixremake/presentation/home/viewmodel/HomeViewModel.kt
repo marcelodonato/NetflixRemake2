@@ -15,7 +15,6 @@ class HomeViewModel(private val netflixUseCase: NetflixUseCase) : BaseViewModel(
     private val _onCategoriesSuccess = MutableLiveData<Category?>()
     val onCategoriesResult: LiveData<Category?> = _onCategoriesSuccess
 
-
     fun getCategories() = launch {
         netflixUseCase.getCategories().onError {
             _onCategoriesSuccess.postValue(null)

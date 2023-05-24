@@ -1,5 +1,6 @@
 package com.example.netflixremake.presentation.movie.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -16,6 +17,10 @@ import com.squareup.picasso.Picasso
 import kotlin.random.Random
 
 class MovieDetailsActivity : BaseActivity<MovieDetailsViewModel>() {
+
+    companion object {
+        fun getStartIntent(context: Context) = Intent(context, MovieDetailsActivity::class.java)
+    }
 
     override val binding by viewBinding(ActivityMovieDetailsBinding::inflate)
 
