@@ -19,6 +19,11 @@ class RegisterActivity : BaseActivity<RegisterViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupView()
+        setupObservable()
+    }
+
+    private fun setupObservable() = with(viewModel) {
+        onRegisterResult.observe(this@RegisterActivity, ::onRegisterResult)
     }
 
     private fun setupView() {
@@ -55,13 +60,12 @@ class RegisterActivity : BaseActivity<RegisterViewModel>() {
                     binding.etEmailRegister.getEditText(),
                     binding.etPasswordRegister.getEditText()
                 )
-                onRegisterResult()
             }
         }
     }
 
-    private fun onRegisterResult() {
-        if (viewModel.onRegisterResult.value == true) {
+    private fun onRegisterResult(result : Boolean) {
+        if (result) {
             navigateToActivity(HOME_ACTIVITY)
         } else {
             Toast.makeText(this, getString(R.string.unexpected_error), Toast.LENGTH_SHORT).show()

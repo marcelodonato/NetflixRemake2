@@ -14,7 +14,7 @@ class LoginRemoteDataSource : BaseDataSource() {
         val firebase = FirebaseAuth.getInstance()
         firebase.signInWithEmailAndPassword(login, password).addOnCompleteListener {
             if (!it.isSuccessful) {
-                close(LoginException("Login ou senha incorretos"))
+                close(Exception("Login ou senha incorretos"))
             } else{
                 trySend(Unit)
             }
