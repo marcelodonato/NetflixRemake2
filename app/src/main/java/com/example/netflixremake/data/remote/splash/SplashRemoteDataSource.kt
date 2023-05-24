@@ -9,11 +9,7 @@ class SplashRemoteDataSource {
 
     fun verify(): Flow<Boolean> = callbackFlow {
         val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            trySend(true)
-        } else {
-            trySend(false)
-        }
+        trySend(user != null)
         awaitClose()
     }
 }
